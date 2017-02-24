@@ -1,12 +1,13 @@
 var _ = require('underscore');
 var c3 = require('c3');
 var $ = require('jquery');
-
 //line chart over time
+debugger
 var parsed = _.map(data, function (time, index) {
     return time[0][1]/1000;
     return list;
 });
+
 parsed.unshift('first');
 console.log('line chart data');
 console.log(parsed);

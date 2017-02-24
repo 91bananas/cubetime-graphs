@@ -2,8 +2,7 @@ var fs = require('fs');
 var _ = require('underscore');
 var watchify = require('watchify');
 var mkdirp = require('mkdirp'),
-    // colors = require('colors');
-chalk = require('chalk');
+    chalk = require('chalk');
 
 var compileUnderscore = require('node-underscorify').transform({
     templateSettings: {
@@ -13,7 +12,7 @@ var compileUnderscore = require('node-underscorify').transform({
     }
 });
 var files = [
-    ['index.js', 'build.js'],
+    ['index.js', './bundles/build.js']
 ];
 
 var watching = false;
@@ -29,9 +28,9 @@ if (process.argv[2] == '--watch') {
 }
 
 var b = require('browserify')(initConfig);
-b.plugin('factor-bundle', {
-    outputs: _.pluck(files, 1)
-});
+// b.plugin('factor-bundle', {
+//     outputs: _.pluck(files, 1)
+// });
 b.transform('lessify');
 b.transform(compileUnderscore);
 
@@ -39,14 +38,14 @@ b.on('update', doTheThing);
 doTheThing();
 function doTheThing(e) {
     console.log(chalk.cyan('Starting build!'));
-
-    mkdirp('features/bundles/', function (err) {
+    mkdirp('./bundles/', function (err) {
         if (err) {
             console.log(chalk.bgRed.white(err));
         } else {
             b.bundle(function (err, buf) {
+                // console.log(buf.toString());
                 if (buf) {
-                    var message = chalk.dim('/static/reloaded/') + ' Bundles created.';
+                    var message = 'Bundles created.';
                     if (watching) {
                         message += chalk.yellow(' Watchifying...');
                     }
@@ -55,7 +54,7 @@ function doTheThing(e) {
             })
             .on('error', function (err) {
                 console.log(chalk.bgRed.white(err.message));
-            }).pipe(fs.createWriteStream('features/bundles/common.js'));
+            });
         }
     });
 }

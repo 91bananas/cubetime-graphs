@@ -1,0 +1,42 @@
+{
+  "name": "cubetime-graphs",
+  "version": "0.0.1",
+  "description": "graphs for rubiks cube time data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node run.js --watch",
+    "start": "python -m SimpleHTTPServer 8001"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/91bananas/cubetime-graphs.git"
+  },
+  "keywords": [
+    "js",
+    "c3",
+    "d3",
+    "rubiks",
+    "cube",
+    "speedcubing"
+  ],
+  "author": "david cushman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/91bananas/cubetime-graphs/issues"
+  },
+  "homepage": "https://github.com/91bananas/cubetime-graphs",
+  "dependencies": {
+    "c3": "^0.4.11",
+    "jquery": "^3.1.1",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "browserify": "^13.3.0",
+    "chalk": "^1.1.3",
+    "lessify": "^1.0.1",
+    "mkdirp": "^0.5.1",
+    "node-underscorify": "0.0.14",
+    "watchify": "^3.9.0"
+  }
+}
