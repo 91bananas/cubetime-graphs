@@ -12,7 +12,7 @@ var compileUnderscore = require('node-underscorify').transform({
     }
 });
 var files = [
-    ['index.js', './bundles/build.js']
+    ['index.js', 'build.js']
 ];
 
 var watching = false;
